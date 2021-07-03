@@ -1,19 +1,16 @@
 {
-  "name": "homebridge-synology-surveillance-homemode",
-  "version": "1.0.3",
-  "author": "jonbell",
-  "description": "Homebridge switch for synology surveillance station's home mode (forked from homebridge-http-multiswitch)",
+  "name": "homebridge-synology-home",
+  "version": "2.0.1",
+  "author": "cpda11",
+  "description": "Homebridge switch for synology surveillance station's home mode (forked from https://github.com/jon-bell/homebridge-synology-surveillance-homemode)",
   "license": "MIT",
-  "homepage": "https://github.com/jon-bell/homebridge-synology-surveillance-homemode",
+  "homepage": "https://github.com/cpda11/homebridge-synology-surveillance-homemode",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jon-bell/homebridge-synology-surveillance-homemode"
+    "url": "git+https://github.com/cpda11/homebridge-synology-surveillance-homemode"
   },
   "keywords": [
-    "homebridge-plugin",
-    "multiswitch",
-    "switch",
-    "radio"
+    "homebridge-plugin"
   ],
   "main": "index.js",
   "engines": {
@@ -22,8 +19,5 @@
   },
   "dependencies": {
     "request": "^2.65.0"
-  },
-  "bugs": {
-    "url": "https://github.com/jon-bell/homebridge-synology-surveillance-homemode/issues"
   }
 }

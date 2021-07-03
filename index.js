@@ -7,7 +7,7 @@ var request = require('request');
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
-    homebridge.registerAccessory('homebridge-synology-surveillance-homemode', 'SSHomeMode', HttpMultiswitch);
+    homebridge.registerAccessory('homebridge-synology-home', 'SynologyHome', HttpMultiswitch);
 };
 
 function HttpMultiswitch(log, config) {
@@ -64,14 +64,15 @@ HttpMultiswitch.prototype = {
                 callback(error);
             } else {
                 var resp = JSON.parse(responseBody);
+                this.log('getState: ' + resp.data.on)
                 callback(error, resp.data.on);
             }
         }.bind(this));
     },
 
     setPowerState: function (targetService, powerState, callback) {
-        var state = (powerState ? "off" : "on");
-        this.httpRequest("/webapi/entry.cgi?api=SYNO.SurveillanceStation.HomeMode&version=1&method=Switch&" + state + "=true", function (error, response, responseBody) {
+        var url = "/webapi/entry.cgi?api=SYNO.SurveillanceStation.HomeMode&version=1&method=Switch&on=" + powerState
+        this.httpRequest(url, function (error, response, responseBody) {
             if (error) {
                 this.log.error('setPowerState failed: ' + error.message);
                 this.log('response: ' + response + '\nbody: ' + responseBody);
